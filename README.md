@@ -138,14 +138,18 @@ python yolo_detect.py --model=my_model_ncnn_model --source=picamera0 --resolutio
 ```
 the arguments for yolo_detect.py:
     --model: Path to a model file (e.g. my_model.pt). If the model isn't found, it will default to using yolov8s.pt.
+    
     --source: Source to run inference on. The options are:
         Image file (example: test.jpg)
         Folder of images (example: my_images/test)
         Video file (example: testvid.mp4)
         Index of a connected USB camera (example: usb0)
         Index of a connected Picamera module for Raspberry Pi (example: picamera0)
+        
     --thresh (optional): Minimum confidence threshold for displaying detected objects. Default value is 0.5 (example: 0.4)
+    
     --resolution (optional): Resolution in WxH to display inference results at. If not specified, the program will match the source resolution. (example: 1280x720)
+    
     --record (optional): Record a video of the results and save it as demo1.avi. (If using this option, the --resolution argument must also be specified
 
 I also put another inference example that does google search for the title of object when user click on the object box. the instruction is the same just replace yolo_detect.py with yolo_detect_googleSearch.py 
