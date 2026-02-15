@@ -110,5 +110,46 @@ Label all the pictures and then when all pictures are annotated, press Export bu
 Click below to acces a Colab notebook for training YOLO models. you need Label Studio project export for this notebook. 
 https://colab.research.google.com/github/amirZareie/EdgeVision/blob/main/train_yolo_models.ipynb
 
+# deploy trained model to Raspberry Pi 5
+after downloading your custom yolo model you should have a my_model.zip file. 
+now activate the inference environment that has been created ealier by running below command in terminal: 
+
+```bash
+source inference/bin/activate
+```
+unzip my_model.zip file to a directory, you should be able to see .pt model. given we want to run the model on raspberry pi which does have limited resources, we need to reformat pt (pyTorch) model to lighter ncnn one. 
+this can be done with yolo export command as below: 
+
+```bash
+yolo export model=my_model.py format=ncnn
+```
+now you should have my_model_ncnn_model in your directory. 
+
+to run the yolo model you can use yolo_detect.py script in this repository. 
+first get the script file via below command: 
+
+```bash
+curl --ouput yolo_detect.py https://raw.githubusercontent.com/amirZareie/EdgeVision/refs/heads/main/yolo_detect.py
+```
+to run you can use below terminal command: 
+
+```bash
+python yolo_detect.py --model=my_model_ncnn_model --source=picamera0 --resolution=1920x768
+```
+the arguments for yolo_detect.py:
+    --model: Path to a model file (e.g. my_model.pt). If the model isn't found, it will default to using yolov8s.pt.
+    --source: Source to run inference on. The options are:
+        Image file (example: test.jpg)
+        Folder of images (example: my_images/test)
+        Video file (example: testvid.mp4)
+        Index of a connected USB camera (example: usb0)
+        Index of a connected Picamera module for Raspberry Pi (example: picamera0)
+    --thresh (optional): Minimum confidence threshold for displaying detected objects. Default value is 0.5 (example: 0.4)
+    --resolution (optional): Resolution in WxH to display inference results at. If not specified, the program will match the source resolution. (example: 1280x720)
+    --record (optional): Record a video of the results and save it as demo1.avi. (If using this option, the --resolution argument must also be specified
+
+I also put another inference example that does google search for the title of object when user click on the object box. the instruction is the same just replace yolo_detect.py with yolo_detect_googleSearch.py 
+
+
 
 
