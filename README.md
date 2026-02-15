@@ -1,11 +1,4 @@
 # Set up the Raspberry Pi, Group A and B
-When starting this project, it’s best to have a fresh Raspberry Pi OS install to ensure that everything is up to date and there are no unforeseen conflicts on the system. You can use Raspberry Pi Imager to flash an SD card with a fresh OS: make sure to select the 64-bit Raspberry Pi OS Bookworm version. For more details on how to install a new OS on your Raspberry Pi, please follow their installation guide linked here.
-
-
-Make sure to use the latest version of 64-bit Raspberry Pi OS. If you run into errors during this guide, it’s best to start fresh with a new install of the OS.
-<img width="2344" height="1657" alt="image" src="https://github.com/user-attachments/assets/75275211-f804-474d-b503-ddb6ad5a6600" />
-
-
 Plug in a monitor, keyboard, and mouse into your Raspberry Pi and turn it on. Connect it to the internet over WiFi.
 
 Step 1a - Update the Raspberry Pi
@@ -42,7 +35,7 @@ pip install ultralytics ncnn
 ```
 
 
-# Install Label Studio, Group B
+# Install and use Label Studio, Group B
 
 This guide explains how to create a Python virtual environment named **`LabelStudioEnv`** on Raspberry Pi OS and install **Label Studio** inside it.
 
@@ -107,8 +100,15 @@ this account remains on the raspberry pi as the lablestudio service is running l
 sign in with the account that you created and then create new project. 
 after logging in, create a new project. select a project name and import all images. please note if you have more that 100 images you need to upload them in two rounds. 
 in "Labeling Setup", Select "Object Detection with Bounding Boxes"
+
 <img width="516" height="346" alt="Screenshot from 2026-02-15 05-58-54" src="https://github.com/user-attachments/assets/9265a179-265a-4442-8aa5-12a7f09d5bad" />
 
+Label all the pictures and then when all pictures are annotated, press Export button and select "YOLO with Images". the project will get downloaded as zip file. rename it to data.zip.
+
+
+# Training Custom YOLO Model
+Click below to acces a Colab notebook for training YOLO models. you need Label Studio project export for this notebook. 
+https://colab.research.google.com/github/amirZareie/EdgeVision/blob/main/train_yolo_models.ipynb
 
 
 
