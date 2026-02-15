@@ -109,6 +109,9 @@ Label all the pictures and then when all pictures are annotated, press Export bu
 # Training Custom YOLO Model
 Click below to acces a Colab notebook for training YOLO models. you need Label Studio project export for this notebook. 
 https://colab.research.google.com/github/amirZareie/EdgeVision/blob/main/train_yolo_models.ipynb
+I used latest yolo model (yolo26) as default, all other yolo model can be replaced in the notebook for specific need. 
+
+https://docs.ultralytics.com/models/yolo26/#performance-metrics
 
 # deploy trained model to Raspberry Pi 5
 after downloading your custom yolo model you should have a my_model.zip file. 
