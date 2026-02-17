@@ -1,4 +1,4 @@
-# Set up the Raspberry Pi, Group A and B
+# Set up the Raspberry Pi
 Plug in a monitor, keyboard, and mouse into your Raspberry Pi and turn it on. Connect it to the internet over WiFi.
 
 Step 1a - Update the Raspberry Pi
@@ -35,7 +35,7 @@ pip install ultralytics ncnn
 ```
 
 
-# Install and use Label Studio, Group B
+# Install and use Label Studio
 
 This guide explains how to create a Python virtual environment named **`LabelStudioEnv`** on Raspberry Pi OS and install **Label Studio** inside it.
 
@@ -104,6 +104,8 @@ in "Labeling Setup", Select "Object Detection with Bounding Boxes"
 <img width="516" height="346" alt="Screenshot from 2026-02-15 05-58-54" src="https://github.com/user-attachments/assets/9265a179-265a-4442-8aa5-12a7f09d5bad" />
 
 Label all the pictures and then when all pictures are annotated, press Export button and select "YOLO with Images". the project will get downloaded as zip file. rename it to data.zip.
+for further reading on how to label dataset for yolo training, read below article: 
+https://labelstud.io/blog/quickly-create-datasets-for-training-yolo-object-detection-with-label-studio/#:~:text=To%20accelerate%20your%20data%20labeling,YOLO%20model%20with%20the%20dataset
 
 
 # Training Custom YOLO Model
@@ -124,7 +126,7 @@ unzip my_model.zip file to a directory, you should be able to see .pt model. giv
 this can be done with yolo export command as below: 
 
 ```bash
-yolo export model=my_model.py format=ncnn
+yolo export model=my_model.pt format=ncnn
 ```
 now you should have my_model_ncnn_model in your directory. 
 
@@ -155,7 +157,13 @@ the arguments for yolo_detect.py:
     
     --record (optional): Record a video of the results and save it as demo1.avi. (If using this option, the --resolution argument must also be specified
 
-I also put another inference example that does google search for the title of object when user click on the object box. the instruction is the same just replace yolo_detect.py with yolo_detect_googleSearch.py 
+I’ve also included two additional advanced inference scripts to demonstrate what’s possible at inference time:
+1. dual_yolo_detect.py
+This script loads two YOLO models and runs them in parallel. You can load your custom model alongside a pre-trained model, enabling the pretrained model to detect common objects while the custom model handles your specialized classes.
+In addition to all parameters supported by yolo_detect.py, this script requires one extra argument: model2.
+2. yolo_detect_googleSearch.py
+This script runs the provided model to detect objects. When the user clicks on any detected object, the script automatically triggers a Google search for that object's label.
+It uses the exact same parameters as yolo_detect.py.
 
 
 
