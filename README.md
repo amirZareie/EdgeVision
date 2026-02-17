@@ -165,6 +165,11 @@ In addition to all parameters supported by yolo_detect.py, this script requires 
 This script runs the provided model to detect objects. When the user clicks on any detected object, the script automatically triggers a Google search for that object's label.
 It uses the exact same parameters as yolo_detect.py.
 
+please note, you can run inference scripts with yolo pre-trained models. model training is for addressing specialized application need.
+you can download yolo pre-trained models from below link: 
+
+https://docs.ultralytics.com/models
+
 
 
 
