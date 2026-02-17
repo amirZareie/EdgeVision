@@ -11,7 +11,7 @@ sudo apt update && sudo apt upgrade -y
 
 The update could take a few minutes to complete.
 
-# Set up inference virtual environment, Group A and B
+# Set up inference virtual environment
 Next, let’s create a working directory to hold our models and code files in. Create a new directory called “EdgeVision” by issuing:
 
 ```bash
@@ -105,8 +105,8 @@ in "Labeling Setup", Select "Object Detection with Bounding Boxes"
 
 Label all the pictures and then when all pictures are annotated, press Export button and select "YOLO with Images". the project will get downloaded as zip file. rename it to data.zip.
 for further reading on how to label dataset for yolo training, read below article: 
-https://labelstud.io/blog/quickly-create-datasets-for-training-yolo-object-detection-with-label-studio/#:~:text=To%20accelerate%20your%20data%20labeling,YOLO%20model%20with%20the%20dataset
 
+<a href="https://labelstud.io/blog/quickly-create-datasets-for-training-yolo-object-detection-with-label-studio/" target="_blank">Quickly Create Datasets for Training YOLO Object Detection with Label Studio</a>
 
 # Training Custom YOLO Model
 Click below to acces a Colab notebook for training YOLO models. you need Label Studio project export for this notebook. 
